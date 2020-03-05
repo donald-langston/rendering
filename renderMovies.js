@@ -1,8 +1,31 @@
 
 function renderMovies(movies) {
+var movieContent = "";
+
+    movies.forEach(element => {
+        movieContent += `<div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters bg-secondary">
+          <div class="col-md-4">
+            <img src="${element.poster}" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${element.title}</h5>
+              <p class="card-text">${element.year}</p>
+              <p class="card-text">IMDB:</p>
+              <p class="card-text">${element.imdbRating}</p>
+              <p class="card-text">Rotten Tomatoes:</p>
+              <p class="card-text">${element.rottenTomatoesRating * 100}%</p>
+            </div>
+          </div>
+        </div>
+      </div>`;        
+    });
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(movies)}</code>
+            <div>
+                ${movieContent}
+            </div>
         </div>
     `
 }

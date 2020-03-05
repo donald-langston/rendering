@@ -2,11 +2,29 @@
 function renderRestaurants(restaurants) {
     // HINT: You can use <img /> tags that point to these playing card images: 
     // https://commons.wikimedia.org/wiki/Category:SVG_playing_cards
+    var resterauntContent = "";
+
+    restaurants.forEach(element => {
+        resterauntContent += `<div style="background-color: gray; width: 175px; height: 100px">
+        <p style="margin-bottom: 0">${element.name}</p> 
+        <p style="margin-bottom: 0">${element.type}</p>
+        <p style="margin-bottom: 0">${createDollarSigns(element.priceRating)}</p>
+        </div>`});
     return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(restaurants)}</code>
+        <div class="text-center mt-5" style="display: flex; justify-content: space-around; align-items: center; background-color: black; width: 600px; height: 200px">
+                ${resterauntContent}
         </div>
     `
+}
+
+
+function createDollarSigns(amount) {
+    var dollarSigns = "";
+    for(var i = 0; i < amount; i++) {
+        dollarSigns += "$";
+    }
+    
+    return dollarSigns;
 }
 
 function restaurants() {
