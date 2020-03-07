@@ -1,10 +1,36 @@
 
 function renderAlbums(albums) {
+    var renderedAlbum = "";
+    albums.forEach(function(album) {
+        renderedAlbum += getArtist(album);
+        renderedAlbum += getAlbumTitileAndCover(album);
+    });
+
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(albums)}</code>
+            
         </div>
     `
+}
+
+function getArtist(album) {
+    return `<h1>${album.artist}</h1>`;
+}
+
+function getAlbumTitileAndCover(album) {
+    var titleAndCover = "";
+    album.albums.forEach(function(element) {
+        titleAndCover += `<img src="${element.albumCover}" <h2>${element.title}</h2>>`
+        titleAndCover += getSongTitleAndLength(element.songs);
+    })
+}
+
+function getSongTitleAndLength(songs) {
+    var songTitleAndLength = `<ul>`;
+    songs.forEach(function(song) {
+        songTitleAndLength += `<li>${song.title} ${song.length}</li>`
+    });
+    return songTitleAndLength += `</ul>`
 }
 
 function albums() {
